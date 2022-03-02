@@ -57,8 +57,9 @@ const loadPhoneDetails = slug => {
 const displyPhoneDetails = data => {
     console.log(data);
     const phoneDetails = document.getElementById('phone-details');
-
+    //clear search phone
     phoneDetails.innerHTML = '';
+    //create single phone details card
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
@@ -69,7 +70,24 @@ const displyPhoneDetails = data => {
                 <h5 class="card-title">brand : ${data.brand}</h5>                
                 <h5 class="card-title">ChipSet : ${data.mainFeatures.chipSet}</h5>             
                 <h5 class="card-title">DisplaySize : ${data.mainFeatures.displaySize}</h5>                
-                <h5 class="card-title">Memory : ${data.mainFeatures.memory}</5>                
+                <h5 class="card-title">DisplaySize : ${data.mainFeatures.displaySize}</h5>                
+                <h5 class="card-title">Memory : ${data.mainFeatures.memory}</h5>                
+                <h5 class="card-title">sensors : </h5>                
+                <h5 class="card-title">1 : ${data.mainFeatures.sensors[0]}</h5>         
+                <h5 class="card-title">2 : ${data.mainFeatures.sensors[1]}</h5>         
+                <h5 class="card-title">3 : ${data.mainFeatures.sensors[2]}</h5>         
+                <h5 class="card-title">4 : ${data.mainFeatures.sensors[3]}</h5>         
+                <h5 class="card-title">5 : ${data.mainFeatures.sensors[4]}</h5>         
+                <h5 class="card-title">6 : ${data.mainFeatures.sensors[5]}</h5>         
+                <h5 class="card-title">7 : ${data.mainFeatures.sensors[6]}</h5>         
+                <h5 class="card-title">Storage : ${data.mainFeatures.storage}</h5>         
+                <h5 class="card-title">Others : </h5>         
+                <h5 class="card-title">Bluetooth : ${data.others.Bluetooth}</h5>         
+                <h5 class="card-title">GPS : ${data.others.GPS}</h5>         
+                <h5 class="card-title">NFC : ${data.others.NFC}</h5>         
+                <h5 class="card-title">Radio : ${data.others.Radio}</h5>         
+                <h5 class="card-title">USB : ${data.others.USB}</h5>         
+                <h5 class="card-title">WLAN : ${data.others.WLAN}</h5>         
             </div>
     `;
     phoneDetails.appendChild(div);
