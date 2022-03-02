@@ -5,14 +5,17 @@ const searchPhone = () => {
     // clear search field
     searchField.value = '';
     //empty search alert
-    if (searchText === '') {
-        return alert('Plese Enter phone model')
+    if (searchText == '') {
+        alert('Plese Enter Phone Model')
     }
-    // load data from api
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySearchResult(data.data));
+    else {
+        // load data from api
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displaySearchResult(data.data));
+    }
+
 
 }
 
@@ -21,9 +24,13 @@ const searchPhone = () => {
 const displaySearchResult = (data) => {
     const searchResult = document.getElementById('search-result');
     //20 phone
-    // const first20Phone = data.slice(0, 5);
+    const first20Phone = data.slice(0, 5);
+    console.log(first20Phone);
 
     searchResult.innerHTML = '';
+    if (data.length == 0) {
+        alert('This Phone is not Available here')
+    }
     data.forEach(data => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -66,20 +73,20 @@ const displyPhoneDetails = data => {
     <img src="${data.image}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Name : ${data.name}</h5>
-                <h5 class="card-title">ReleaseDate : ${data.releaseDate}</h5>
+                <h5 class="card-title">ReleaseDate : ${data.releaseDate ? data.releaseDate : 'No Release Date'}</h5>
                 <h5 class="card-title">brand : ${data.brand}</h5>                
                 <h5 class="card-title">ChipSet : ${data.mainFeatures.chipSet}</h5>             
                 <h5 class="card-title">DisplaySize : ${data.mainFeatures.displaySize}</h5>                
                 <h5 class="card-title">DisplaySize : ${data.mainFeatures.displaySize}</h5>                
                 <h5 class="card-title">Memory : ${data.mainFeatures.memory}</h5>                
                 <h5 class="card-title">sensors : </h5>                
-                <h5 class="card-title">1 : ${data.mainFeatures.sensors[0]}</h5>         
-                <h5 class="card-title">2 : ${data.mainFeatures.sensors[1]}</h5>         
-                <h5 class="card-title">3 : ${data.mainFeatures.sensors[2]}</h5>         
-                <h5 class="card-title">4 : ${data.mainFeatures.sensors[3]}</h5>         
-                <h5 class="card-title">5 : ${data.mainFeatures.sensors[4]}</h5>         
-                <h5 class="card-title">6 : ${data.mainFeatures.sensors[5]}</h5>         
-                <h5 class="card-title">7 : ${data.mainFeatures.sensors[6]}</h5>         
+                <h5 class="card-title">  ${data.mainFeatures.sensors[0]}</h5>         
+                <h5 class="card-title">  ${data.mainFeatures.sensors[1]}</h5>         
+                <h5 class="card-title">  ${data.mainFeatures.sensors[2]}</h5>         
+                <h5 class="card-title">${data.mainFeatures.sensors[3]}</h5>         
+                <h5 class="card-title">  ${data.mainFeatures.sensors[4]}</h5>         
+                <h5 class="card-title">  ${data.mainFeatures.sensors[5] ? data.mainFeatures.sensors[5] : ''}</h5>         
+                <h5 class="card-title">${data.mainFeatures.sensors[6] ? data.mainFeatures.sensors[6] : ''}</h5>         
                 <h5 class="card-title">Storage : ${data.mainFeatures.storage}</h5>         
                 <h5 class="card-title">Others : </h5>         
                 <h5 class="card-title">Bluetooth : ${data.others.Bluetooth}</h5>         
