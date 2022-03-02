@@ -16,16 +16,13 @@ const searchPhone = () => {
             .then(data => displaySearchResult(data.data));
     }
 
-
 }
-
 
 // showing search result
 const displaySearchResult = (data) => {
     const searchResult = document.getElementById('search-result');
-    //20 phone
-    const first20Phone = data.slice(0, 5);
-    console.log(first20Phone);
+    //20 phone show
+    const first20Phone = data.slice(0, 20);
 
     searchResult.innerHTML = '';
     if (data.length == 0) {
@@ -46,9 +43,7 @@ const displaySearchResult = (data) => {
             </div>
         `;
         searchResult.appendChild(div);
-
     });
-
 }
 
 // showing phone details---------------------------------
@@ -62,7 +57,6 @@ const loadPhoneDetails = slug => {
 }
 
 const displyPhoneDetails = data => {
-    console.log(data);
     const phoneDetails = document.getElementById('phone-details');
     //clear search phone
     phoneDetails.innerHTML = '';
